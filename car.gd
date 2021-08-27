@@ -67,7 +67,6 @@ func apply_friction():
     var drag_force = velocity * velocity.length() * drag
     acceleration += drag_force + friction_force
     
-    
 func get_input():
     var turn = 0
     if Input.is_action_pressed("steer_right"):
@@ -96,12 +95,10 @@ func calculate_steering(delta):
         velocity = -new_heading * min(velocity.length(), max_speed_reverse)
     rotation = new_heading.angle()
     
-
 func _on_FlashTimer_timeout():
     var flash_modifier = $Sprite.material.get_shader_param("flash_modifier")
     $Sprite.material.set_shader_param("flash_modifier", abs(flash_modifier - 1))
-
-
+    
 func _on_CollisionCooldownTimer_timeout():
     unflash()
     unshake_screen()
