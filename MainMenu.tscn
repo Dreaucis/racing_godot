@@ -1,27 +1,76 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://main_menu.gd" type="Script" id=1]
+[ext_resource path="res://main_screen.png" type="Texture" id=2]
 
 [node name="MarginContainer" type="MarginContainer"]
-margin_left = 49.0
-margin_top = 43.0
-margin_right = 981.0
-margin_bottom = 550.0
-custom_constants/margin_right = 100
-custom_constants/margin_top = 100
-custom_constants/margin_left = 100
-custom_constants/margin_bottom = 100
+margin_left = 23.0589
+margin_top = 18.4512
+margin_right = 1979.06
+margin_bottom = 1301.45
+grow_horizontal = 0
+grow_vertical = 0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_constants/margin_right = 300
+custom_constants/margin_top = 300
+custom_constants/margin_left = 400
+custom_constants/margin_bottom = 400
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 100.0
-margin_top = 100.0
-margin_right = 832.0
-margin_bottom = 407.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 400.0
+margin_top = 300.0
+margin_right = 1656.0
+margin_bottom = 883.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+margin_right = 1256.0
+margin_bottom = 359.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 363.0
+margin_right = 1256.0
+margin_bottom = 583.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+alignment = 1
+
+[node name="MenuOptions" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 1256.0
+margin_bottom = 220.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.08
+custom_constants/separation = 20
+
+[node name="start" type="Button" parent="VBoxContainer/HBoxContainer/MenuOptions"]
+margin_right = 1256.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.58
 text = "start"
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="pressed" from="Button" to="." method="start_button_pressed"]
+[node name="quit" type="Button" parent="VBoxContainer/HBoxContainer/MenuOptions"]
+margin_top = 120.0
+margin_right = 1256.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.58
+text = "quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuOptions/start" to="." method="start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuOptions/quit" to="." method="quit_button_pressed"]
