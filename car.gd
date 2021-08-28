@@ -31,7 +31,7 @@ func _physics_process(delta):
     impact_velocity = velocity
     velocity = move_and_slide(velocity)
     handle_collision()
-    
+
 func calculate_max_velocity():
     return -friction/(2*drag) + sqrt(pow(friction/(2*drag),2) - engine_power/drag)
     
@@ -44,8 +44,9 @@ func handle_collision():
 
 func shake_screen():
     var trauma = 2 * impact_velocity.length() / max_velocity
-    $ShakeCamera2D.current = true
-    $ShakeCamera2D.add_trauma(trauma)
+    if trauma > 0:
+        $ShakeCamera2D.current = true
+        $ShakeCamera2D.add_trauma(trauma)
     
 func unshake_screen():
     $Camera2D.current = true
