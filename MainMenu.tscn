@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main_menu.gd" type="Script" id=1]
+
+[node name="MarginContainer" type="MarginContainer"]
+margin_left = 49.0
+margin_top = 43.0
+margin_right = 981.0
+margin_bottom = 550.0
+custom_constants/margin_right = 100
+custom_constants/margin_top = 100
+custom_constants/margin_left = 100
+custom_constants/margin_bottom = 100
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 832.0
+margin_bottom = 407.0
+text = "start"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Button" to="." method="start_button_pressed"]
