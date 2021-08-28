@@ -30,6 +30,7 @@ func _physics_process(delta):
     velocity += acceleration * delta
     impact_velocity = velocity
     velocity = move_and_slide(velocity)
+    impact_velocity = impact_velocity - velocity
     handle_collision()
 
 func calculate_max_velocity():
