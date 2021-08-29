@@ -10,7 +10,8 @@ var max_speed_reverse = 250
 var slip_speed = 400
 var traction_fast = 0.1
 var traction_slow = 0.7
-var hp = 10
+
+var hp = 16
 
 var acceleration = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -18,7 +19,7 @@ var steer_direction
 
 var max_velocity
 var impact_velocity
-    
+
 func _ready():
     max_velocity = calculate_max_velocity()
     
@@ -38,10 +39,18 @@ func calculate_max_velocity():
     
 func handle_collision():
     if get_slide_count() > 0 and $CollisionCooldownTimer.time_left == 0:
-        hp -= 1
+        increment_health()
         $CollisionCooldownTimer.start()
         flash()
         shake_screen()
+
+func set_health(value):
+    hp = value
+    $HUD/GUI/HBoxContainer/VBoxContainer/EnergyBar.value = hp
+  
+func increment_health(value = -1):
+    hp = hp + value
+    $HUD/GUI/HBoxContainer/VBoxContainer/EnergyBar.value = hp
 
 func shake_screen():
     var trauma = 2 * impact_velocity.length() / max_velocity
@@ -103,3 +112,6 @@ func _on_FlashTimer_timeout():
 func _on_CollisionCooldownTimer_timeout():
     unflash()
     unshake_screen()
+
+func _on_GUI_ready():
+    $HUD/GUI/HBoxContainer/VBoxContainer/EnergyBar.value = hp
