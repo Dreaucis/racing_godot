@@ -71,6 +71,5 @@ text = "quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuOptions/start" to="." method="start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/MenuOptions/quit" to="." method="quit_button_pressed"]
