@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://tools/RoadTool.gd" type="Script" id=1]
+[ext_resource path="res://tools/road.png" type="Texture" id=2]
+
+[sub_resource type="Curve2D" id=1]
+bake_interval = 31.35
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[node name="RoadToolPath2D" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureLine2D" type="Line2D" parent="."]
+width = 128.0
+default_color = Color( 1, 1, 1, 1 )
+texture = ExtResource( 2 )
+texture_mode = 1
+[connection signal="draw" from="." to="." method="_on_RoadToolPath2D_draw"]
