@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal health_changed(new_health)
+
 var wheel_base = 25
 var steering_angle = 15
 var engine_power = 600
@@ -46,11 +48,11 @@ func handle_collision():
 
 func set_health(value):
     hp = value
-    $HUD/GUI/HBoxContainer/VBoxContainer/EnergyBar.value = hp
+    emit_signal("health_changed", hp)
   
 func increment_health(value = -1):
     hp = hp + value
-    $HUD/GUI/HBoxContainer/VBoxContainer/EnergyBar.value = hp
+    emit_signal("health_changed", hp)
 
 func shake_screen():
     var trauma = 2 * impact_velocity.length() / max_velocity

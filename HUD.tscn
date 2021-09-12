@@ -1,24 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://energy_bg.png" type="Texture" id=1]
 [ext_resource path="res://energy_fill.png" type="Texture" id=2]
+[ext_resource path="res://HUD.gd" type="Script" id=3]
 
-[node name="GUI" type="MarginContainer"]
+[node name="HUD" type="CanvasLayer"]
+follow_viewport_enable = true
+script = ExtResource( 3 )
+
+[node name="GUI" type="MarginContainer" parent="."]
 margin_bottom = 82.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI"]
 margin_right = 256.0
 margin_bottom = 82.0
 custom_constants/separation = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/HBoxContainer"]
 margin_right = 256.0
 margin_bottom = 82.0
 
-[node name="EnergyLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="EnergyLabel" type="Label" parent="GUI/HBoxContainer/VBoxContainer"]
 margin_right = 256.0
 margin_bottom = 14.0
 custom_constants/shadow_offset_x = 0
@@ -27,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EnergyBar" type="TextureProgress" parent="HBoxContainer/VBoxContainer"]
+[node name="EnergyBar" type="TextureProgress" parent="GUI/HBoxContainer/VBoxContainer"]
 margin_top = 18.0
 margin_right = 256.0
 margin_bottom = 82.0
